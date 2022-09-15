@@ -10,6 +10,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import br.com.up.listadepresentes.model.Gift;
+import br.com.up.listadepresentes.repository.GiftRepository;
 
 public class AddGiftActivity extends AppCompatActivity {
 
@@ -59,5 +60,8 @@ public class AddGiftActivity extends AppCompatActivity {
                 description
         );
 
+        GiftRepository.getInstance().save(gift);
+
+        onBackPressed();
     }
 }
