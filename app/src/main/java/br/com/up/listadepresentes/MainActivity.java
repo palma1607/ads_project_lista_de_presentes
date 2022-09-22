@@ -1,6 +1,8 @@
 package br.com.up.listadepresentes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -31,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewGifts = findViewById(R.id.recycler_gifts);
         textViewGiftsNotFound = findViewById(R.id.text_gifts_not_found);
 
+        recyclerViewGifts.setLayoutManager(
+                new LinearLayoutManager(this,
+                        RecyclerView.VERTICAL,
+                        false)
+                //new GridLayoutManager(this,8)
+        );
+
+
         fabAddGift.setOnClickListener(
                 new View.OnClickListener() {
             @Override
@@ -58,6 +68,6 @@ public class MainActivity extends AppCompatActivity {
             textViewGiftsNotFound.setVisibility(View.VISIBLE);
         }
 
-        recyclerViewGifts.setAdapter(new GiftAdapter());
+        recyclerViewGifts.setAdapter(new GiftAdapter(gifts));
     }
 }
